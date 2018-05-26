@@ -12,9 +12,14 @@
 		821CFACA20B5929A00188574 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 821CFAC820B5929A00188574 /* Main.storyboard */; };
 		821CFACC20B5929A00188574 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 821CFACB20B5929A00188574 /* Assets.xcassets */; };
 		821CFACF20B5929A00188574 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 821CFACD20B5929A00188574 /* LaunchScreen.storyboard */; };
+		82B4B10820B6DDE600A87D10 /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B4B10720B6DDE600A87D10 /* InputViewController.swift */; };
+		82BF5DD720B6F49400EA7F98 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BF5DD620B6F49400EA7F98 /* Task.swift */; };
+		D14EC50B12673FA903C4562D /* Pods_taskapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C53172B424802D50FC42FA5 /* Pods_taskapp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		202FFA0CA09DB9649B82E32D /* Pods-taskapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-taskapp.release.xcconfig"; path = "Pods/Target Support Files/Pods-taskapp/Pods-taskapp.release.xcconfig"; sourceTree = "<group>"; };
+		3C53172B424802D50FC42FA5 /* Pods_taskapp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_taskapp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		821CFAC120B5929A00188574 /* taskapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = taskapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		821CFAC420B5929A00188574 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		821CFAC620B5929A00188574 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +27,9 @@
 		821CFACB20B5929A00188574 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		821CFACE20B5929A00188574 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		821CFAD020B5929A00188574 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8265E3578402FDCFC487A8C8 /* Pods-taskapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-taskapp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-taskapp/Pods-taskapp.debug.xcconfig"; sourceTree = "<group>"; };
+		82B4B10720B6DDE600A87D10 /* InputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewController.swift; sourceTree = "<group>"; };
+		82BF5DD620B6F49400EA7F98 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +37,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D14EC50B12673FA903C4562D /* Pods_taskapp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		802AF3A1CC0FB4559931180D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3C53172B424802D50FC42FA5 /* Pods_taskapp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		821CFAB820B5929A00188574 = {
 			isa = PBXGroup;
 			children = (
 				821CFAC320B5929A00188574 /* taskapp */,
 				821CFAC220B5929A00188574 /* Products */,
+				CEE086F0B1C617A088537BF1 /* Pods */,
+				802AF3A1CC0FB4559931180D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,8 +79,19 @@
 				821CFACB20B5929A00188574 /* Assets.xcassets */,
 				821CFACD20B5929A00188574 /* LaunchScreen.storyboard */,
 				821CFAD020B5929A00188574 /* Info.plist */,
+				82B4B10720B6DDE600A87D10 /* InputViewController.swift */,
+				82BF5DD620B6F49400EA7F98 /* Task.swift */,
 			);
 			path = taskapp;
+			sourceTree = "<group>";
+		};
+		CEE086F0B1C617A088537BF1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8265E3578402FDCFC487A8C8 /* Pods-taskapp.debug.xcconfig */,
+				202FFA0CA09DB9649B82E32D /* Pods-taskapp.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +101,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 821CFAD320B5929A00188574 /* Build configuration list for PBXNativeTarget "taskapp" */;
 			buildPhases = (
+				470B9EEF677294C350C5B9C0 /* [CP] Check Pods Manifest.lock */,
 				821CFABD20B5929A00188574 /* Sources */,
 				821CFABE20B5929A00188574 /* Frameworks */,
 				821CFABF20B5929A00188574 /* Resources */,
+				31497BF43977A8EA1FC7EEAC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -131,11 +163,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		31497BF43977A8EA1FC7EEAC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-taskapp/Pods-taskapp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-taskapp/Pods-taskapp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		470B9EEF677294C350C5B9C0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-taskapp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		821CFABD20B5929A00188574 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82BF5DD720B6F49400EA7F98 /* Task.swift in Sources */,
+				82B4B10820B6DDE600A87D10 /* InputViewController.swift in Sources */,
 				821CFAC720B5929A00188574 /* ViewController.swift in Sources */,
 				821CFAC520B5929A00188574 /* AppDelegate.swift in Sources */,
 			);
@@ -272,6 +347,7 @@
 		};
 		821CFAD420B5929A00188574 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8265E3578402FDCFC487A8C8 /* Pods-taskapp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -287,6 +363,7 @@
 		};
 		821CFAD520B5929A00188574 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 202FFA0CA09DB9649B82E32D /* Pods-taskapp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
