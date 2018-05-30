@@ -18,7 +18,7 @@ class InputViewController: UIViewController {
     
     @IBOutlet weak var datePicker: UIDatePicker!
     
-    @IBOutlet weak var category: UITextField!
+    @IBOutlet weak var category: UITextField! //追加
     
     
     var task: Task!
@@ -35,6 +35,7 @@ class InputViewController: UIViewController {
         titleTextField.text = task.title
         contentsTextView.text = task.contents
         datePicker.date = task.date
+        category.text = task.category
     }
     
     //この画面から元の画面に移動する時に発動
@@ -43,6 +44,7 @@ class InputViewController: UIViewController {
             self.task.title = self.titleTextField.text!
             self.task.contents = self.contentsTextView.text
             self.task.date = self.datePicker.date
+            self.task.category = self.category.text!
             self.realm.add(self.task, update: true)
         }
         setNotification(task: task)

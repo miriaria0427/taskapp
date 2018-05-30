@@ -10,9 +10,12 @@ import UIKit
 import RealmSwift
 import UserNotifications
 
-class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource{
+class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate{
 
     @IBOutlet weak var TableView: UITableView!
+    
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     
     //Realmのインスタンスを取得する
     let realm = try! Realm()
@@ -28,6 +31,9 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         
         TableView.delegate = self
         TableView.dataSource = self
+        searchBar.delegate = self
+        searchBar.showsCancelButton = true
+        searchBar.tintColor = UIColor.red
     }
 
     override func didReceiveMemoryWarning() {
@@ -53,11 +59,10 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm"
         //テーブルに登録されている日付のデータをstring型に変換して表示
-        let dateString:String = formatter.string(from: task.date)
+        let dateString:String = formatter.string(from:task.date)
         cell.detailTextLabel?.text = dateString
         
         return cell
-        
     }
     
     // MARK: UITableViewDelegateプロトコルのメソッド
@@ -70,6 +75,24 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     // セルが削除が可能なことを伝えるメソッド
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath)-> UITableViewCellEditingStyle {
         return .delete
+    }
+    
+    //検索ボタンを押した時に呼ばれるメソッド
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar){
+        self.view.endEditing(true)
+       //検索結果を配列に格納してTableViewを更新させる
+        self.taskArray = try!Realm().objects(Task.self).filter("category CONTAINS[c] %@", searchBar.text!)
+        TableView.reloadData()
+    }
+    
+    //検索バーのキャンセルボタンが押された時に呼ばれるメソッド
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar){
+        self.view.endEditing(true)
+        searchBar.text = ""
+        //元の全てのデータを表示させる
+        self.taskArray = realm.objects(Task.self)
+        
+        TableView.reloadData()
     }
     
     // Delete ボタンが押された時に呼ばれるメソッド
