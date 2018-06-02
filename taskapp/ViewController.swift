@@ -11,7 +11,7 @@ import RealmSwift
 import UserNotifications
 
 class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate{
-
+    
     @IBOutlet weak var TableView: UITableView!
     
     @IBOutlet weak var searchBar: UISearchBar!
@@ -35,12 +35,12 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         searchBar.showsCancelButton = true
         searchBar.tintColor = UIColor.red
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // MARK: UITableViewDataSourceプロトコルのメソッド
     // データの数（＝セルの数）を返すメソッド
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -80,7 +80,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     //検索ボタンを押した時に呼ばれるメソッド
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar){
         self.view.endEditing(true)
-       //検索結果を配列に格納してTableViewを更新させる
+        //検索結果を配列に格納してTableViewを更新させる
         self.taskArray = try!Realm().objects(Task.self).filter("category CONTAINS[c] %@", searchBar.text!)
         TableView.reloadData()
     }
@@ -121,7 +121,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             }
         }
     }
-
+    
     // segueで画面遷移する時に呼ばれる
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         let inputViewController:InputViewController = segue.destination as! InputViewController
@@ -143,11 +143,11 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             inputViewController.task = task
         }
     }
-        
+    
     // 入力画面から戻ってきた時に TableView を更新させる
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         TableView.reloadData()
-        }
+    }
 }
 

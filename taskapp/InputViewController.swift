@@ -18,13 +18,13 @@ class InputViewController: UIViewController {
     
     @IBOutlet weak var datePicker: UIDatePicker!
     
-    @IBOutlet weak var category: UITextField! //追加
+    @IBOutlet weak var category: UITextField!
     
     
     var task: Task!
     let realm = try! Realm()
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,18 +38,23 @@ class InputViewController: UIViewController {
         category.text = task.category
     }
     
-    //この画面から元の画面に移動する時に発動
+    //この画面から元の画面に移動する時に発動(何も入力されていない場合は何もしない）
     override func viewWillDisappear(_ animated: Bool) {
-        try! realm.write {
-            self.task.title = self.titleTextField.text!
-            self.task.contents = self.contentsTextView.text
-            self.task.date = self.datePicker.date
-            self.task.category = self.category.text!
-            self.realm.add(self.task, update: true)
+        if(self.titleTextField.text! == "" && self.contentsTextView.text == ""
+            && self.category.text! == ""){
+            return
+        }else{
+            try! realm.write {
+                self.task.title = self.titleTextField.text!
+                self.task.contents = self.contentsTextView.text
+                self.task.date = self.datePicker.date
+                self.task.category = self.category.text!
+                self.realm.add(self.task, update: true)
+            }
+            setNotification(task: task)
+            
+            super.viewWillDisappear(animated)
         }
-        setNotification(task: task)
-        
-        super.viewWillDisappear(animated)
     }
     
     // タスクのローカル通知を登録する
@@ -78,9 +83,7 @@ class InputViewController: UIViewController {
         
         // ローカル通知を登録
         let center = UNUserNotificationCenter.current()
-        center.add(request) { (error) in
-            print(error ?? "ローカル通知登録 OK")  // error が nil ならローカル通知の登録に成功したと表示します。errorが存在すればerrorを表示します。
-        }
+        center.add(request)
         
         // 未通知のローカル通知一覧をログ出力
         center.getPendingNotificationRequests { (requests: [UNNotificationRequest]) in
@@ -91,8 +94,8 @@ class InputViewController: UIViewController {
             }
         }
     }
-
-
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -105,13 +108,13 @@ class InputViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
